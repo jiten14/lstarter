@@ -13,7 +13,7 @@ class GenerateLayout extends Command
 
     public function handle()
     {
-        $sourcePath = __DIR__ . '/../../Layouts/layout.blade.php';
+        $sourcePath = __DIR__ . '/../Layouts/layout.blade.php';
         $destinationPath = resource_path('views/layouts/layout.blade.php');
 
         $destinationDir = dirname($destinationPath);
