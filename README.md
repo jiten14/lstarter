@@ -112,7 +112,7 @@ composer require jiten14/lstarter:1.0.0
 If you encounter any issues or bugs, or if you need support with this package, feel free to reach out. I am happy to help you!
 
 **Author**: Jitendriya Tripathy  
-**Email**: [\[Jiten's email\]](mailto:jitendriya14@gmail.com)
+**Email**: [Jiten's email](mailto:jitendriya14@gmail.com)
 
 ## License
 
