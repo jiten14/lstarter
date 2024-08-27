@@ -1,0 +1,31 @@
+{
+    "name": "jiten14/lstarter",
+    "description": "A Laravel Starter Application to build Application.",
+    "type": "library",
+    "require": {
+        "php": "^8.1",
+        "laravel/framework": "^10.0",
+        "illuminate/support": "^10.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Jiten14\\Lstarter\\LstarterServiceProvider"
+            ]
+        }
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Jiten14\\Lstarter\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jitendriya Tripathy",
+            "email": "jitendriya14@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
