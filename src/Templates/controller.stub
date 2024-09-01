@@ -1,0 +1,55 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\{{modelName}};
+use Illuminate\Http\Request;
+
+class {{controllerName}} extends Controller
+{
+    public function index()
+    {
+        $items = {{modelName}}::paginate(10);
+        return view('{{modelName}}s.index', compact('items'));
+    }
+
+    public function create()
+    {
+        return view('{{modelName}}s.create');
+    }
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate({{validationRules}});
+
+        $item = {{modelName}}::create($validatedData);
+
+        return redirect()->route('{{modelName}}s.index')->with('success', '{{modelName}} created successfully.');
+    }
+
+    public function show({{modelName}} $item)
+    {
+        return view('{{modelName}}s.show', compact('item'));
+    }
+
+    public function edit({{modelName}} $item)
+    {
+        return view('{{modelName}}s.edit', compact('item'));
+    }
+
+    public function update(Request $request, {{modelName}} $item)
+    {
+        $validatedData = $request->validate({{validationRules}});
+
+        $item->update($validatedData);
+
+        return redirect()->route('{{modelName}}s.index')->with('success', '{{modelName}} updated successfully.');
+    }
+
+    public function destroy({{modelName}} $item)
+    {
+        $item->delete();
+
+        return redirect()->route('{{modelName}}s.index')->with('success', '{{modelName}} deleted successfully.');
+    }
+}
