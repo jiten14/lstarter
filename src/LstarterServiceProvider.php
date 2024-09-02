@@ -10,6 +10,7 @@ use Jiten14\Lstarter\Console\GenerateRelation;
 use Jiten14\Lstarter\Console\GenerateFactory;
 use Jiten14\Lstarter\Console\GenerateController;
 use Jiten14\Lstarter\Console\GenerateLayout;
+use Jiten14\Lstarter\Console\GenerateRoutes;
 
 class LstarterServiceProvider extends ServiceProvider
 {
@@ -24,7 +25,21 @@ class LstarterServiceProvider extends ServiceProvider
             GenerateFactory::class,
             GenerateController::class,
             GenerateLayout::class,
+            GenerateRoutes::class,
         ]);
+
+        // Load the helpers file
+        $this->loadHelpers();
+
+    }
+
+    protected function loadHelpers()
+    {
+        $helpersFile = __DIR__ . '/helpers.php';
+
+        if (file_exists($helpersFile)) {
+            require_once $helpersFile;
+        }
     }
 
     public function boot()

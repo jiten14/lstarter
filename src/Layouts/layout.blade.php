@@ -17,15 +17,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
+                    @foreach(generateMenuItems() as $item)
+                        @php
+                            // Determine if this menu item is active
+                            $isActive = Request::url() == $item['url'] ? 'active' : '';
+                        @endphp
+                        <li class="nav-item {{ $isActive }}">
+                            <a href="{{ $item['url'] }}" class="nav-link">{{ ucfirst($item['name']) }}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>

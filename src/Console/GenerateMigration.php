@@ -12,7 +12,7 @@ class GenerateMigration extends Command
      *
      * @var string
      */
-    protected $signature = 'generate:migration {--mo : Add modifiers to fields}';
+    protected $signature = 'generate:migration {tablename} {--mo : Add modifiers to fields}';
 
     /**
      * The console command description.
@@ -41,8 +41,7 @@ class GenerateMigration extends Command
 
     public function handle()
     {
-        // Ask for table name
-        $tableName = $this->ask('Enter table name (in all lowercase & singular):');
+        $tableName = $this->argument('tablename');
 
         // Ask for fields
         $fields = $this->ask('Enter fields with type (comma separated, e.g., name:string, email:string):');

@@ -117,6 +117,7 @@ Lstarter follows semantic versioning:
 - **v1.0.1**: Minor Fixes & refactor the code.
 - **v1.1.0**: Added features to Generate Migration, Model, Controller, Factory & Seeder.
 - **v1.1.1**: Minor Fixes to Controller Generator.
+- **v1.1.2**: Bug Fixes, Refactor the Code & Function to add menu dynamically.
 - **v1.2.0**: Upcoming features or improvements will be released in this version.
 
 ### How to Update
@@ -132,7 +133,7 @@ composer update jiten14/lstarter
 If you need to revert to a previous version:
 
 ```bash
-composer require jiten14/lstarter:1.1.0
+composer require jiten14/lstarter:1.1.1
 ```
 
 ## Support & Contact

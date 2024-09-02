@@ -19,7 +19,7 @@ class MigrationGenerator
     public function generate(string $tableName, string $fields, string $modifiers, string $relations, bool $softDeletes)
     {
         // Prepare migration file name
-        $fileName = date('Y_m_d_His') . '_create_' . Str::plural($tableName) . '_table.php';
+        $fileName = date('Y_m_d_His') . '_create_' . Str::lower(Str::plural($tableName)) . '_table.php';
 
         // Get migration template content
         $templatePath = __DIR__ . '/../Templates/migration.stub';
@@ -47,8 +47,8 @@ class MigrationGenerator
      */
     private function replacePlaceholders(string $template, string $tableName, string $fields, string $modifiers, string $relations, bool $softDeletes): string
     {
-        $className = 'Create' . Str::studly(Str::plural($tableName)) . 'Table';
-        $tableNamePlural = Str::plural($tableName);
+        $className = 'Create' . Str::lower(Str::studly(Str::plural($tableName))) . 'Table';
+        $tableNamePlural = Str::lower(Str::plural($tableName));
         $fieldDefinitions = $this->generateFieldDefinitions($fields, $modifiers);
         $relationDefinitions = $this->generateRelationDefinitions($relations);
 

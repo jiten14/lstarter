@@ -20,7 +20,7 @@ class ControllerGenerator
 
     public function generate($name)
     {
-        $modelName = Str::singular(Str::studly($name));
+        $modelName = Str::studly($name);
         $controllerName = "{$modelName}Controller";
 
         $modelClass = "App\\Models\\{$modelName}";
@@ -89,7 +89,7 @@ class ControllerGenerator
         $stub = str_replace('{{modelName}}', $modelName, $stub);
         $stub = str_replace('{{fillable}}', implode(", ", $fillable), $stub);
 
-        // Convert model name to lowercase for the view path
+         // Convert model name to lowercase for the view path
         $lowercaseModelName = Str::lower(Str::plural($modelName));
         $stub = str_replace('{{viewPath}}', $lowercaseModelName, $stub);
 

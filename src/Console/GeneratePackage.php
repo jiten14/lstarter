@@ -9,15 +9,17 @@ use Illuminate\Support\Str;
 
 class GeneratePackage extends Command
 {
-    protected $signature = 'generate:package';
+    protected $signature = 'generate:package {tablename}';
 
     protected $description = 'Generate migration, run migration, and generate model';
 
     public function handle()
     {
+        $tableName = $this->argument('tablename');
+
         // Step 1: Generate migration
         $this->info('Generating migration...');
-        $exitCode = $this->call('generate:migration', ['--mo' => true]);
+        $exitCode = $this->call('generate:migration', ['tablename' => $tableName, '--mo' => true]);
         
         if ($exitCode !== 0) {
             $this->error('Migration generation failed. Aborting package generation.');
@@ -33,22 +35,8 @@ class GeneratePackage extends Command
             return;
         }
 
-        // Step 3: Get the latest migration file
-        $migrationPath = database_path('migrations');
-        $files = scandir($migrationPath, SCANDIR_SORT_DESCENDING);
-        $latestMigration = $files[0];
-
-        // Extract table name from migration file
-        preg_match('/create_(\w+)_table/', $latestMigration, $matches);
-        $tableName = $matches[1] ?? null;
-
-        if (!$tableName) {
-            $this->error('Could not determine table name from migration file.');
-            return;
-        }
-
         // Step 4: Generate model
-        $modelName = Str::studly(Str::singular($tableName));
+        $modelName = Str::studly($tableName);
         $this->info("Generating model for {$modelName}...");
         $exitCode = $this->call("generate:model", ['name' => $modelName]);
         
@@ -72,8 +60,13 @@ class GeneratePackage extends Command
         $this->info("Seeding database using {$seederClass}...");
         Artisan::call('db:seed', ['--class' => $seederClass]);
 
-        // Execute the generate:factory command using the modelName
+        // Execute the generate:controller command using the modelName
         $this->call('generate:controller', [
+            'model' => $modelName,
+        ]);
+
+        // Execute the generate:routes command using the modelName
+        $this->call('generate:routes', [
             'model' => $modelName,
         ]);
 
