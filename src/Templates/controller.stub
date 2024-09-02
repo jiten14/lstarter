@@ -10,12 +10,12 @@ class {{controllerName}} extends Controller
     public function index()
     {
         $items = {{modelName}}::paginate(10);
-        return view('{{modelName}}s.index', compact('items'));
+        return view('{{viewPath}}.index', compact('items'));
     }
 
     public function create()
     {
-        return view('{{modelName}}s.create');
+        return view('{{viewPath}}.create');
     }
 
     public function store(Request $request)
@@ -24,17 +24,17 @@ class {{controllerName}} extends Controller
 
         $item = {{modelName}}::create($validatedData);
 
-        return redirect()->route('{{modelName}}s.index')->with('success', '{{modelName}} created successfully.');
+        return redirect()->route('{{viewPath}}.index')->with('success', '{{modelName}} created successfully.');
     }
 
     public function show({{modelName}} $item)
     {
-        return view('{{modelName}}s.show', compact('item'));
+        return view('{{viewPath}}.show', compact('item'));
     }
 
     public function edit({{modelName}} $item)
     {
-        return view('{{modelName}}s.edit', compact('item'));
+        return view('{{viewPath}}.edit', compact('item'));
     }
 
     public function update(Request $request, {{modelName}} $item)
@@ -43,13 +43,13 @@ class {{controllerName}} extends Controller
 
         $item->update($validatedData);
 
-        return redirect()->route('{{modelName}}s.index')->with('success', '{{modelName}} updated successfully.');
+        return redirect()->route('{{viewPath}}.index')->with('success', '{{modelName}} updated successfully.');
     }
 
     public function destroy({{modelName}} $item)
     {
         $item->delete();
 
-        return redirect()->route('{{modelName}}s.index')->with('success', '{{modelName}} deleted successfully.');
+        return redirect()->route('{{viewPath}}.index')->with('success', '{{modelName}} deleted successfully.');
     }
 }

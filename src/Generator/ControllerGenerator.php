@@ -89,6 +89,10 @@ class ControllerGenerator
         $stub = str_replace('{{modelName}}', $modelName, $stub);
         $stub = str_replace('{{fillable}}', implode(", ", $fillable), $stub);
 
+        // Convert model name to lowercase for the view path
+        $lowercaseModelName = Str::lower(Str::plural($modelName));
+        $stub = str_replace('{{viewPath}}', $lowercaseModelName, $stub);
+
         $validationRules = $this->formatValidationRules($rules);
         $stub = str_replace('{{validationRules}}', $validationRules, $stub);
 
