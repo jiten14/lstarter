@@ -1,0 +1,14 @@
+@extends('layouts.layout')
+
+@section('content')
+    <h1>Edit {{modelName}}</h1>
+
+    <form action="{{ route('{{viewFolderName}}.update', ${{modelNameLower}}->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+
+        {{fillableFields}}
+
+        <button type="submit" class="btn btn-primary mt-5">Update</button>
+    </form>
+@endsection

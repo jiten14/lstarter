@@ -1,0 +1,38 @@
+@extends('layouts.layout')
+
+@section('content')
+    <h1>{{modelName}} List</h1>
+    
+    <div class="mb-3">
+        <a href="{{ route('{{viewFolderName}}.create') }}" class="btn btn-success">Create New {{modelName}}</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sl No.</th>
+{{tableHeaders}}
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (${{modelNames}} as $index=>${{modelNameLower}})
+                <tr>
+                    <td>{{ $index+1 }}</td>
+{{tableRows}}
+                    <td>
+                        <a href="{{ route('{{viewFolderName}}.show', ${{modelNameLower}}) }}" class="btn btn-primary">View</a>
+                        <a href="{{ route('{{viewFolderName}}.edit', ${{modelNameLower}}) }}" class="btn btn-warning">Edit</a>
+                        <form action="{{ route('{{viewFolderName}}.destroy', ${{modelNameLower}}) }}" method="POST" style="display: inline-block;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    {{ ${{modelNames}}->links() }}
+@endsection

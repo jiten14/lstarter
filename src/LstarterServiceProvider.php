@@ -9,8 +9,12 @@ use Jiten14\Lstarter\Console\GenerateModel;
 use Jiten14\Lstarter\Console\GenerateRelation;
 use Jiten14\Lstarter\Console\GenerateFactory;
 use Jiten14\Lstarter\Console\GenerateController;
-use Jiten14\Lstarter\Console\GenerateLayout;
 use Jiten14\Lstarter\Console\GenerateRoutes;
+use Jiten14\Lstarter\Console\GenerateLayout;
+use Jiten14\Lstarter\Console\GenerateIndexView;
+use Jiten14\Lstarter\Console\GenerateCreateView;
+use Jiten14\Lstarter\Console\GenerateEditView;
+use Jiten14\Lstarter\Console\GenerateShowView;
 
 class LstarterServiceProvider extends ServiceProvider
 {
@@ -24,8 +28,12 @@ class LstarterServiceProvider extends ServiceProvider
             GenerateRelation::class,
             GenerateFactory::class,
             GenerateController::class,
-            GenerateLayout::class,
             GenerateRoutes::class,
+            GenerateLayout::class,
+            GenerateIndexView::class,
+            GenerateCreateView::class,
+            GenerateEditView::class,
+            GenerateShowView::class,
         ]);
 
         // Load the helpers file

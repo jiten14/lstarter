@@ -1,0 +1,13 @@
+@extends('layouts.layout')
+
+@section('content')
+    <h1>Create New {{modelName}}</h1>
+
+    <form action="{{ route('{{viewFolderName}}.store') }}" method="POST">
+        @csrf
+
+        {{fillableFields}}
+
+        <button type="submit" class="btn btn-primary mt-5">Create</button>
+    </form>
+@endsection

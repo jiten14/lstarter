@@ -70,6 +70,29 @@ class GeneratePackage extends Command
             'model' => $modelName,
         ]);
 
+        // Execute the generate:layout command to copy layout.blade.php
+        $this->call('generate:layout');
+
+        // Execute the generate:view-index command using the modelName
+        $this->call('generate:view-index', [
+            'model' => $modelName,
+        ]);
+
+        // Execute the generate:view-create command using the modelName
+        $this->call('generate:view-create', [
+            'model' => $modelName,
+        ]);
+
+        // Execute the generate:view-edit command using the modelName
+        $this->call('generate:view-edit', [
+            'model' => $modelName,
+        ]);
+
+        // Execute the generate:view-show command using the modelName
+        $this->call('generate:view-show', [
+            'model' => $modelName,
+        ]);
+
         $this->info('Package generation completed successfully!');
     }
 }

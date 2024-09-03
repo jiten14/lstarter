@@ -125,6 +125,10 @@ class FactoryGenerator
             return "rand(0, 1)";
         }
 
+        if (Str::contains($column, ['is_'])) {
+            return "rand(0, 1)";
+        }
+
         return "fake()->word()";
     }
 

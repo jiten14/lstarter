@@ -22,6 +22,8 @@ class ControllerGenerator
     {
         $modelName = Str::studly($name);
         $controllerName = "{$modelName}Controller";
+        $modelNameLower = Str::lower($modelName);
+        $modelNames = Str::plural($modelNameLower);
 
         $modelClass = "App\\Models\\{$modelName}";
         if (!class_exists($modelClass)) {
@@ -47,7 +49,7 @@ class ControllerGenerator
 
         $rules = $this->generateValidationRules($columns);
 
-        $controllerTemplate = $this->getControllerTemplate($controllerName, $modelName, $fillable, $rules);
+        $controllerTemplate = $this->getControllerTemplate($controllerName, $modelName, $modelNameLower, $modelNames, $fillable, $rules);
 
         $path = app_path("Http/Controllers/{$controllerName}.php");
 
@@ -81,15 +83,17 @@ class ControllerGenerator
         return $rules;
     }
 
-    protected function getControllerTemplate($controllerName, $modelName, $fillable, $rules)
+    protected function getControllerTemplate($controllerName, $modelName, $modelNameLower, $modelNames, $fillable, $rules)
     {
         $stub = $this->files->get(__DIR__ . '/../Templates/controller.stub');
 
         $stub = str_replace('{{controllerName}}', $controllerName, $stub);
         $stub = str_replace('{{modelName}}', $modelName, $stub);
+        $stub = str_replace('{{modelNameLower}}', $modelNameLower, $stub);
+        $stub = str_replace('{{modelNames}}', $modelNames, $stub);
         $stub = str_replace('{{fillable}}', implode(", ", $fillable), $stub);
 
-         // Convert model name to lowercase for the view path
+        // Convert model name to lowercase for the view path
         $lowercaseModelName = Str::lower(Str::plural($modelName));
         $stub = str_replace('{{viewPath}}', $lowercaseModelName, $stub);
 

@@ -9,8 +9,8 @@ class {{controllerName}} extends Controller
 {
     public function index()
     {
-        $items = {{modelName}}::paginate(10);
-        return view('{{viewPath}}.index', compact('items'));
+        ${{modelNames}} = {{modelName}}::paginate(10);
+        return view('{{viewPath}}.index', compact('{{modelNames}}'));
     }
 
     public function create()
@@ -22,33 +22,33 @@ class {{controllerName}} extends Controller
     {
         $validatedData = $request->validate({{validationRules}});
 
-        $item = {{modelName}}::create($validatedData);
+        ${{modelNameLower}} = {{modelName}}::create($validatedData);
 
         return redirect()->route('{{viewPath}}.index')->with('success', '{{modelName}} created successfully.');
     }
 
-    public function show({{modelName}} $item)
+    public function show({{modelName}} ${{modelNameLower}})
     {
-        return view('{{viewPath}}.show', compact('item'));
+        return view('{{viewPath}}.show', compact('{{modelNameLower}}'));
     }
 
-    public function edit({{modelName}} $item)
+    public function edit({{modelName}} ${{modelNameLower}})
     {
-        return view('{{viewPath}}.edit', compact('item'));
+        return view('{{viewPath}}.edit', compact('{{modelNameLower}}'));
     }
 
-    public function update(Request $request, {{modelName}} $item)
+    public function update(Request $request, {{modelName}} ${{modelNameLower}})
     {
         $validatedData = $request->validate({{validationRules}});
 
-        $item->update($validatedData);
+        ${{modelNameLower}}->update($validatedData);
 
         return redirect()->route('{{viewPath}}.index')->with('success', '{{modelName}} updated successfully.');
     }
 
-    public function destroy({{modelName}} $item)
+    public function destroy({{modelName}} ${{modelNameLower}})
     {
-        $item->delete();
+        ${{modelNameLower}}->delete();
 
         return redirect()->route('{{viewPath}}.index')->with('success', '{{modelName}} deleted successfully.');
     }

@@ -7,16 +7,11 @@ use Jiten14\Lstarter\Generator\LayoutGenerator;
 
 class GenerateLayout extends Command
 {
-    // The name and signature of the console command
     protected $signature = 'generate:layout';
+    protected $description = 'Generate the layout file for the application';
 
-    // The console command description
-    protected $description = 'Copy layout.blade.php to the resources/views/layouts folder';
-
-    // The layout generator instance
     protected $layoutGenerator;
 
-    // Constructor to initialize the layout generator
     public function __construct(LayoutGenerator $layoutGenerator)
     {
         parent::__construct();
@@ -25,11 +20,18 @@ class GenerateLayout extends Command
 
     public function handle()
     {
-        // Call the generate method from LayoutGenerator
-        $this->layoutGenerator->generate();
+        $result = $this->layoutGenerator->generate();
 
-        // Output a success message
-        $this->info('Layout generated successfully!');
-        
+        switch ($result['status']) {
+            case 'success':
+                $this->info($result['message']);
+                break;
+            case 'warning':
+                $this->warn($result['message']);
+                break;
+            case 'error':
+                $this->error($result['message']);
+                break;
+        }
     }
 }

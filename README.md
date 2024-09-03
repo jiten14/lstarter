@@ -1,7 +1,7 @@
 
 # Lstarter
 
-**Lstarter** is a Laravel package designed to streamline the process of generating migrations, models, relationships, factories, seeders, and controllers all at once, in addition to copying a `layout.blade.php` file with Bootstrap 5.3 integration. The package includes prepacked layouts that can be easily copied to your Laravel application's `resources/views/layouts` directory.This package simplifies the development process, allowing you to quickly set up essential parts of your Laravel application.
+**Lstarter** is a Laravel package designed to streamline the process of **generating migrations, models, factories, seeders, controllers, routes & views** all at once, in addition to copying a `layout.blade.php` file with Bootstrap 5.3 integration. The package includes prepacked layouts that can be easily copied to your Laravel application's `resources/views/layouts` directory.This package simplifies the development process, allowing you to quickly set up essential parts of your Laravel application.
 
 ## Installation
 
@@ -15,11 +15,68 @@ composer require jiten14/lstarter
 
 ### Generate All at Once
 
-After installing the package, you can generate the migration, model, relationships, factory, seeder, and controller files all at once by running the following Artisan command:
+After installing the package, you can generate the **migration, model, factory, seeder, controller, routes and views** files all at once by running the following simple Artisan command:
 
 ```bash
-php artisan generate:package
+php artisan generate:package {model}
 ```
+Replace `{model}` with the name of your model without curly bracket. This command will automatically create all the necessary files and set up your package.
+
+### Individual File Generation
+
+If you prefer to generate files one by one, you can still do so. Use the following commands:
+
+- To generate a migration:
+```bash
+php artisan generate:migration {model}
+```
+- Note:- you can use --mo flag to add modifier to table column.
+
+- To generate a model:
+```bash
+php artisan generate:model {model}
+```
+
+- To add relation to model:
+```bash
+php artisan generate:relation {model}
+```
+
+- To generate a controller:
+```bash
+php artisan generate:controller {model}
+```
+
+- To generate a factory with seeder:
+```bash
+php artisan generate:factory {model}
+```
+
+- To generate a routes:
+```bash
+php artisan generate:routes {model}
+```
+
+- To generate a index view:
+```bash
+php artisan generate:view-index {model}
+```
+
+- To generate a create view:
+```bash
+php artisan generate:view-create {model}
+```
+
+- To generate a edit view:
+```bash
+php artisan generate:view-edit {model}
+```
+
+- To generate a show view:
+```bash
+php artisan generate:view-show {model}
+```
+
 ### Generate Layout
 
 To generate and copy the layout.blade.php file, which includes Bootstrap 5.3 integration, run the following command:
@@ -36,6 +93,9 @@ php artisan generate:layout
 - Generates a model with appropriate relationships in the `app/Models` directory.
 - Sets up the factory and seeder classes in the `database/factories` and `database/seeders` directories, respectively.
 - Generates a controller file in the `app/Http/Controllers` directory.
+- Add resource routes in `routes/web.php` file.
+- Copies the `layout.blade.php` file to `resources/views/layouts` directory.
+- Create a folder in plural form of model name in `resources/views/` directory and Generates views blade files (index,create,edit & show) in the that directory.
 
 ### generate:layout
 
@@ -89,15 +149,18 @@ Here is an example of how the generated layout looks:
 
 ## Customization
 
-Although the generate:package command will generate the migration, model, relationships, factory, seeder, and controller files with prefilled data, you can also customize these files to suit your specific requirements. The generated files are located in the following directories:
+Although the generate:package command will generate the **migration, model, factory, seeder, controller, routes and views** files with prefilled data, you can also customize these files to suit your specific requirements. The generated files are located in the following directories:
 
 - Migrations: `database/migrations`
 - Models: `app/Models`
 - Controllers: `app/Http/Controllers`
 - Factories: `database/factories`
 - Seeders: `database/seeders`
+- Routes: `routes/web.php`
+- Layouts: `resources/views/layouts`
+- views: `resources/views/{models}`
 
-You can modify the code within these files to add custom fields, validation rules, relationships, or any other specific logic needed for your application. After generating the layout file, you can customize it as needed for your application. The file is located in the `resources/views/layouts` directory of your Laravel project.
+You can modify the code within these files to add custom fields, validation rules, relationships, or any other specific logic needed for your application.
 
 ## Contribution
 
@@ -117,8 +180,9 @@ Lstarter follows semantic versioning:
 - **v1.0.1**: Minor Fixes & refactor the code.
 - **v1.1.0**: Added features to Generate Migration, Model, Controller, Factory & Seeder.
 - **v1.1.1**: Minor Fixes to Controller Generator.
-- **v1.1.2**: Bug Fixes, Refactor the Code & Function to add menu dynamically.
-- **v1.2.0**: Upcoming features or improvements will be released in this version.
+- **v1.1.2**: Bug Fixes, Refactor the Code & Menu Generation.
+- **v1.2.0**: Features added to Generate Routes & views.
+- **v1.3.0**: Upcoming features or improvements will be released in this version.
 
 ### How to Update
 
@@ -133,7 +197,7 @@ composer update jiten14/lstarter
 If you need to revert to a previous version:
 
 ```bash
-composer require jiten14/lstarter:1.1.1
+composer require jiten14/lstarter:1.1.2
 ```
 
 ## Support & Contact
