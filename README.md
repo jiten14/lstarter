@@ -181,7 +181,8 @@ Lstarter follows semantic versioning:
 - **v1.1.0**: Added features to Generate Migration, Model, Controller, Factory & Seeder.
 - **v1.1.1**: Minor Fixes to Controller Generator.
 - **v1.1.2**: Bug Fixes, Refactor the Code & Menu Generation.
-- **v1.2.0**: Features added to Generate Routes & views.
+- **v1.2.0**: Features added to Generate Routes & Views.
+- **v1.2.1**: Add support for Laravel 11.
 - **v1.3.0**: Upcoming features or improvements will be released in this version.
 
 ### How to Update
