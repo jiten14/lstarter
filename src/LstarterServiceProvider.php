@@ -15,6 +15,18 @@ use Jiten14\Lstarter\Console\GenerateIndexView;
 use Jiten14\Lstarter\Console\GenerateCreateView;
 use Jiten14\Lstarter\Console\GenerateEditView;
 use Jiten14\Lstarter\Console\GenerateShowView;
+//Fillament Commands
+use Jiten14\Lstarter\Console\FillamentSetup;
+use Jiten14\Lstarter\Console\AdvanceUsers;
+use Jiten14\Lstarter\Console\AdvanceUsersSeed;
+use Jiten14\Lstarter\Console\AdvanceAuth;
+use Jiten14\Lstarter\Console\AdvanceRole;
+use Jiten14\Lstarter\Console\AdvancePermission;
+use Jiten14\Lstarter\Console\AdvancePolicy;
+use Jiten14\Lstarter\Console\AdvanceFillament;
+use Jiten14\Lstarter\Console\GenerateFillaPackage;
+use Jiten14\Lstarter\Console\AdvanceUpdateResource;
+
 
 class LstarterServiceProvider extends ServiceProvider
 {
@@ -34,6 +46,16 @@ class LstarterServiceProvider extends ServiceProvider
             GenerateCreateView::class,
             GenerateEditView::class,
             GenerateShowView::class,
+            FillamentSetup::class,//Fillament Commands
+            AdvanceUsers::class,
+            AdvanceUsersSeed::class,
+            AdvanceAuth::class,
+            AdvanceRole::class,
+            AdvancePermission::class,
+            AdvancePolicy::class,
+            AdvanceFillament::class,
+            GenerateFillaPackage::class,
+            AdvanceUpdateResource::class,
         ]);
 
         // Load the helpers file

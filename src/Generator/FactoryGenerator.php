@@ -89,7 +89,7 @@ class FactoryGenerator
             return "fake()->address()";
         }
 
-        if (Str::contains($column, 'phone')) {
+        if (Str::contains($column, ['phone','mobile'])) {
             return "fake()->phoneNumber()";
         }
 

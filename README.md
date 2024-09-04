@@ -2,6 +2,7 @@
 # Lstarter
 
 **Lstarter** is a Laravel package designed to streamline the process of **generating migrations, models, factories, seeders, controllers, routes & views** all at once, in addition to copying a `layout.blade.php` file with Bootstrap 5.3 integration. The package includes prepacked layouts that can be easily copied to your Laravel application's `resources/views/layouts` directory.This package simplifies the development process, allowing you to quickly set up essential parts of your Laravel application.
+**Latest Release supports FillamentPhp. Documentation will be updated soon.**
 
 ## Installation
 
@@ -183,6 +184,7 @@ Lstarter follows semantic versioning:
 - **v1.1.2**: Bug Fixes, Refactor the Code & Menu Generation.
 - **v1.2.0**: Features added to Generate Routes & Views.
 - **v1.2.1**: Add support for Laravel 11.
+- **v1.2.2**: Add support for Fillamentphp.
 - **v1.3.0**: Upcoming features or improvements will be released in this version.
 
 ### How to Update
