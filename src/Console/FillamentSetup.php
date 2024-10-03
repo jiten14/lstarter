@@ -19,8 +19,8 @@ class FillamentSetup extends Command
         $this->info('Setting up user model for Fillament');
         $this->call('advance:users');
         // Step 2: User Table Soft Delete Migration & seeder
-        $this->info('Adding soft delete to users table & Seeding data');
-        $this->call('advance:users-seed');
+        //$this->info('Adding soft delete to users table & Seeding data');
+        //$this->call('advance:users-seed');
         // Step 3: Setting off User,Role & Permission Resources
         $this->info('Setting off User,Role & Permission Resources');
         $this->call('advance:auth');

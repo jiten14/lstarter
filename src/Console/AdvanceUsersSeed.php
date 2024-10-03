@@ -22,7 +22,7 @@ class AdvanceUsersSeed extends Command
         }
 
         // Step 2: Create a new migration for adding softDeletes to users table
-        $this->info('Creating migration for softDeletes...');
+        /*$this->info('Creating migration for softDeletes...');
         Artisan::call('make:migration add_soft_deletes_to_users_table --table=users');
         $migrationPath = $this->getLatestMigrationFile();
         
@@ -45,7 +45,7 @@ class AdvanceUsersSeed extends Command
         // Step 3: Run the migration
         $this->info('Running migration...');
         Artisan::call('migrate');
-        $this->info('Migration completed.');
+        $this->info('Migration completed.');*/
 
         // Step 4: Create UserSeeder
         $this->info('Creating UserSeeder...');
