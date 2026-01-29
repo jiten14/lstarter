@@ -70,9 +70,20 @@ class AdvanceUsers extends Command
         $extendsReplace = 'extends Authenticatable implements FilamentUser';
         $userModelContent = str_replace($extendsSearch, $extendsReplace, $userModelContent);
 
-        // Replace HasFactory, Notifiable with additional traits
-        $traitsSearch = 'use HasFactory, Notifiable;';
-        $traitsReplace = 'use HasFactory, Notifiable, HasRoles, SoftDeletes;';
+        // Replace HasFactory, Notifiable with additional traits (handle both with and without HasApiTokens)
+        if (strpos($userModelContent, 'use HasFactory, Notifiable, HasApiTokens;') !== false) {
+            // Laravel version with HasApiTokens
+            $traitsSearch = 'use HasFactory, Notifiable, HasApiTokens;';
+            $traitsReplace = 'use HasFactory, Notifiable, HasApiTokens, HasRoles, SoftDeletes;';
+        } elseif (strpos($userModelContent, 'use HasApiTokens, HasFactory, Notifiable;') !== false) {
+            // Alternative order of traits
+            $traitsSearch = 'use HasApiTokens, HasFactory, Notifiable;';
+            $traitsReplace = 'use HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes;';
+        } else {
+            // Laravel version without HasApiTokens
+            $traitsSearch = 'use HasFactory, Notifiable;';
+            $traitsReplace = 'use HasFactory, Notifiable, HasRoles, SoftDeletes;';
+        }
         $userModelContent = str_replace($traitsSearch, $traitsReplace, $userModelContent);
 
         // Add canAccessPanel method at the end of the User class
